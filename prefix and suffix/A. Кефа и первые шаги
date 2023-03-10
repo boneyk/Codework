@@ -1,1 +1,26 @@
-R
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+//    freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
+    int n,l;
+    cin >> n;
+    vector<int>v(n);
+    for(int i = 0;i<n;i++){
+        cin >> v[i];
+    }
+    vector<int>prefix;
+    int count = 0;
+    for(int i = 0;i<n;i++){
+        if(i+1 < n && v[i] <= v[i+1]){
+            count++;
+        }else{
+            prefix.push_back(count);
+            count = 0;
+        }
+    }
+    sort(prefix.begin(),prefix.end());
+    cout << prefix.back()+1;
+//    fclose(stdin); fclose(stdout);
+    return 0;
+}
