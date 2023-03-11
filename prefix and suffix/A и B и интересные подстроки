@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+vector<int>v[100005];
+int main(){
+//    freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
+    vector<int>dict(26);
+    for(int i = 0;i<26;i++){
+        cin >> dict[i];
+    }
+    string s;
+    cin >> s;
+    int n = s.size();
+    vector<long long>prefix(s.size()+1);
+    for(int i = 1 ; i <= s.size(); i++){
+        prefix[i] = prefix[i-1] + dict[s[i-1]-'a'];
+        char q = s[i];
+        int t = s[i] - 'a';
+        v[s[i-1]-'a'].push_back(i);
+    }
+    long long ans = 0;
+    for(int i = 0; i < 26; i++){
+        map<long long,long long>mp;
+        for(int j = 0;j<v[i].size();j++){
+            ans += mp[prefix[v[i][j]-1]];
+            mp[prefix[v[i][j]]]++;
+        }
+    }
+    cout<<ans<<endl;
+//    fclose(stdin); fclose(stdout);
+    return 0;
+}
