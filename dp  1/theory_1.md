@@ -45,10 +45,10 @@ int g(int k) {
 ```cpp
 int g(int n) {
     int f[n+1];
-    f[0] = 0;
+    f[0] = 0; // база динамики
     f[1] = 1;
    for(int i = 2;i<=n;i++){
-        fib[i] = fib[i-1]+fib[i-2];
+        fib[i] = fib[i-1]+fib[i-2]; //рекуррентный переход
    }
     return fib[n];
 }
