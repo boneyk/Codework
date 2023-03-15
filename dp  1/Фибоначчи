@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef unsigned long long ull;
+
+vector <ull> fibc(1001,0);
+ull fib(int n) {
+    if (fibc[n] == 0){
+        fibc[n] = n < 2 ? 1 : (fib(n-1) + fib(n-2))%10;
+    }
+    return fibc[n];
+}
+
+int main(){
+    unsigned int n;
+    cin >> n;
+    cout << fib(n);
+    return 0;
+}
