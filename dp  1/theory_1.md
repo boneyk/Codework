@@ -51,6 +51,7 @@ int g(int n) {
         fib[i] = fib[i-1]+fib[i-2];
    }
     return fib[n];
+}
 ```
 
 # Динамика по подотрезкам
