@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    unsigned int n;
+    cin >> n;
+    vector <int> v(n+3);
+    v[0]=1;
+    v[1]=1;
+    v[2]=2;
+    for(int i = 3;i<=n;i++){
+        v[i] = v[i-3]+v[i-2]+v[i-1];
+    }
+    cout << v[n];
+
+    return 0;
+}
