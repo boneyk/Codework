@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+//    freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
+    int n,t;
+    cin >> t;
+    while(t--) {
+        cin >> n;
+        vector<int> a(n);
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+        vector<int>points(n);
+        for(int i = n-1;i!=-1;i--){
+            points[i] = a[i];
+            if(i+a[i] < n){
+                points[i] += points[i+a[i]];
+            }
+        }
+        int mx = points[0];
+        for(auto i : points){
+            if(i > mx){
+                mx = i;
+            }
+        }
+        cout << mx << '\n';
+    }
+//    fclose(stdin); fclose(stdout);
+    return 0;
+}
