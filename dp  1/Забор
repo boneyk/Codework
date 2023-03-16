@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    unsigned int n,k,a,te;
+    cin >> n >> k;
+    vector<long long> v(n + 1);
+    v[0] = 0;
+    for (int i = 1; i <= n; i++) {
+        cin >> a;
+        v[i] = v[i - 1] + a;
+    }
+    long long minimum = INT_MAX, ans = 0;
+    for (int i = k; i <= n; i++) {
+        if (v[i] - v[i - k] < minimum) {
+            minimum = v[i] - v[i - k];
+            ans = i - k + 1;
+        }
+    }
+    cout << ans;
+    return 0;
+}
