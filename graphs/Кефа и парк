@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve(){
+    int n,m,v,x,y;
+    cin >> n >> m;
+    vector<int>top(n+1);
+    for(int i = 1;i<=n;i++){
+        cin>>top[i];
+    }
+    vector<vector<int>>tree(n+1);
+    vector<bool>leafs(n+1,1);
+    for(int i = 1;i<n;i++){
+        cin >> x >> y;
+        leafs[x] = 0;
+        tree[x].push_back(y);
+        tree[y].push_back(x);
+    }
+    vector<int>cats(n+1);
+    vector<bool>visited(n+1,0);
+    cats[1] = top[1];
+    int count = 0;
+    stack<int>s;
+    s.push(1);
+    while(!s.empty()){
+        v = s.top();
+        s.pop();
+        if(tree[v].size() == 1 && visited[tree[v][0]]){
+            count++;
+        }else if (visited[v]) {
+            continue;
+        }
+        visited[v] = 1;
+        for (auto it = tree[v].rbegin(); it != tree[v].rend(); it++){
+            int u = *it;
+            cats[u] = (top[u] ? cats[v] + 1 : 0);
+            if (!visited[u] && cats[u] <= m) {
+                s.push(u);
+            }
+        }
+    }
+    cout << count;
+}
+
+int main(){
+//    freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
+    solve();
+//    fclose(stdin); fclose(stdout);
+}
