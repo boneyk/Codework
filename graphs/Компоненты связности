@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void dfs(int v, std::vector<vector<int>>& comps, int z,vector<vector<int>>adj,vector<int> &visited) {
+    visited[v] = 1;
+    comps[z].push_back(v);
+    for (auto to : adj[v]) {
+        if (visited[to] == 0) {
+            dfs(to, comps, z,adj,visited);
+        }
+    }
+}
+int main(){
+//    freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
+    int n,m,a,b;
+    cin >> n >> m;
+    vector<vector<int>>adj(n+1);
+    for(int i = 1;i<m+1;i++){
+        cin >> a >> b;
+        adj[a].push_back(b);
+        adj[b].push_back(a);
+    }
+    vector<int>visited(n+1,0);
+    vector<vector<int>>comps(n+1);
+    int sum = 0;
+    for(int i = 1;i<n+1;i++) {
+        if(!visited[i]) {
+            dfs(i, comps, sum, adj, visited);
+            sum++;
+        }
+    }
+    cout << sum << "\n";
+    for (auto i = 0; i < sum; ++i) { // выводим, какой компоненте принадлежит какая вершина, начиная с 1
+        cout << comps[i].size() << "\n";
+        sort(comps[i].begin(),comps[i].end());
+        for(int j = 0;j<comps[i].size();j++){
+            cout << comps[i][j] << " ";
+        }
+        cout << "\n";
+    }
+//    fclose(stdin); fclose(stdout);
+    return 0;
+}
