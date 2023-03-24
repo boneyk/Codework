@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+//    freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
+    int n,m,a,b;
+    cin >> n >> m;
+    int t = m;
+    vector<vector<int>>adj(n+1);
+    while(m--){
+        cin >> a >> b;
+        adj[a].push_back(b);
+        adj[b].push_back(a);
+    }
+    for(int i = 1;i<=n;i++){
+        for(auto j : adj[i]){
+            cout << j << " ";
+        }
+        cout << "\n";
+    }
+//    fclose(stdin); fclose(stdout);
+    return 0;
+}
