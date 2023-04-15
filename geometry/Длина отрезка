@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct point{
+    long long x;
+    long long y;
+};
+
+double pt (point p,point t){
+    double len = sqrt(pow((t.x-p.x),2)+pow((t.y-p.y),2));
+    return len;
+}
+
+int main() {
+
+    point p;
+    cin >> p.x >> p.y;
+    point t;
+    cin >> t.x >> t.y;
+
+    double ans = pt(p,t);
+    cout << fixed << setprecision(6) << ans << "\n";
+
+    return 0;
+}
