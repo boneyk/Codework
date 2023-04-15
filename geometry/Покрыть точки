@@ -1,0 +1,16 @@
+Чтобы покрыть точку (xi, yi), длина более короткой стороны треугольника должна быть не менее xi + yi.
+
+Итак, ответ - max(xi + yi).
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int n,x,y,ans=0;
+	cin >> n;
+	while(n--){
+  cin >> x >> y;
+  ans=max(ans,x+y);
+  }
+	cout << ans;
+}
