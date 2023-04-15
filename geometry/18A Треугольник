@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int sq(int a){
+    return a*a;
+}
+int k[6] = {0};
+void check(string s){
+    int a,b,c;
+    a = sq(k[0]-k[2]) + sq(k[1]-k[3]);
+    b = sq(k[0]-k[4]) + sq(k[1] - k[5]);
+    c = sq(k[4] - k[2]) + sq(k[5]-k[3]);
+    int t = a && b && c;
+    if((a && b && c) == 0) // если прямая становится точкой, выходим из функции, т к не треугольник. Тут дискретка
+        return;
+    if(a + b == c || b + c == a || a + c == b){
+        cout << s;
+        exit(0);
+    }
+}
+int main(){
+//    freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
+    for(int i = 0;i<6;i++) cin >> k[i];
+    check("RIGHT");
+    for(int i = 0;i<6;i++){
+        k[i]--;
+        check("ALMOST");
+        k[i] += 2;
+        check("ALMOST");
+        k[i]--;
+    }
+    cout << "NEITHER";
+//    fclose(stdin); fclose(stdout);
+    return 0;
+}
