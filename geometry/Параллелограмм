@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct point{
+    long long x;
+    long long y;
+};
+
+double pt (point a,point b){
+    double len = sqrt(pow((b.x-a.x),2) + pow((b.y- a.y),2));
+    return len;
+}
+
+int main() {
+
+    point a;
+    cin >> a.x >> a.y;
+    point b;
+    cin >> b.x >> b.y;
+    point c;
+    cin >> c.x >> c.y;
+    point d;
+    cin >> d.x >> d.y;
+
+    double ans0 = pt(a,b);
+    double ans1 = pt(b,c);
+    double ans2 = pt(c,d);
+    double ans3 = pt(a,d);
+
+    if((ans0 == ans2) && (ans1 == ans3)) {
+        cout << "YES";
+    }else{
+        cout << "NO";
+    }
+    return 0;
+}
