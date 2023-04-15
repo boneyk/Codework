@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct point{
+    long long x;
+    long long y;
+};
+
+struct c_vector{
+    long long x;
+    long long y;
+};
+
+point new_vec (point p,c_vector v){
+    point end_of = {p.x+v.x,p.y+v.y};
+    return end_of;
+}
+
+int main() {
+
+    point p;
+    cin >> p.x >> p.y;
+    c_vector v;
+    cin >> v.x >> v.y;
+
+    point e = new_vec(p,v);
+    cout << e.x << " " << e.y << "\n";
+
+    return 0;
+}
