@@ -9,19 +9,23 @@
 Как записать точку и вектор:
 
 ```cpp
-struct point{
-    long long x;
-    long long y;
+struct Point{
+    int x;
+    int y;
+};
+struct Vector{
+    int x;
+    int y;
 };
 
-struct c_vector{
-    long long x;
-    long long y;
-};
-
-point new_vec (point p,c_vector v){
-    point end_of = {p.x+v.x,p.y+v.y};
-    return end_of;
+double len_vect(Vector a, Vector b){
+    double res = sqrt(pow((b.x-a.x),2) + pow((b.y-a.y),2));
+    return res;
+}
+int main(){
+    Vector pt1,pt2;
+    cin>> pt1.x >> pt1.y >> pt2.x >> pt2.y;
+    cout<<len_vect(pt1,pt2);
 }
 ```
 ## Длина отрезка и координаты вектора
